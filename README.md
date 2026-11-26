@@ -6,4 +6,4 @@ A sample intended to demonstrate working with various native Win32 GUI windows, 
 
 ## Building
 
-Visual Studio 2026 with the `Desktop development with C++` workload is required. Make sure `MSVC AddressSanitizer` is enabled in Visual Studio's individual components, as the debug builds are instrumented for memory safety. I use the preview MSVC build tools (installed via the `MSVC Build Tools for x64/x86 (Preview)` Visual Studio component), but this is just a personal preference of mine that isn't strictly necessary and can be disabled in the project settings if you wish to use the current MSVC release tools.
+Visual Studio 2026 with the `Desktop development with C++` workload is required. Make sure `MSVC AddressSanitizer` is enabled in Visual Studio's individual components, as the debug builds are instrumented for memory safety. I use the preview MSVC build tools (installed via the `MSVC Build Tools for x64/x86 (Preview)` Visual Studio component), but this is just a personal preference of mine that isn't strictly necessary and can be disabled in the project settings if you wish to use the current mainline MSVC build tools.
