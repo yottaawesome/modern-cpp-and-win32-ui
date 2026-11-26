@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A sample intended to demonstrate working with various native Win32 GUI windows, controls and layouts with modern C++. Originally spun off from my `win32-experiments` repo after I found the techniques developed there to be useful for serious desktop app development. One sample is currently added, but more development will be done over time, alongside better documentation of the techniques applied.
+A sample intended to demonstrate working with various native Win32 GUI windows, controls and layouts with modern C++. Originally spun off from my `win32-experiments` repo after I found the techniques developed there to be useful for serious desktop app development. One partially-complete sample is currently added, but more development will be done over time, alongside better documentation of the techniques applied.
 
 ## Building
 
