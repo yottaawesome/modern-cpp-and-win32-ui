@@ -2,4 +2,8 @@
 
 ## Introduction
 
-A sample intended to demonstrate working with various Win32 GUI windows and controls with modern C++. In development and will be added to over time.
+A sample intended to demonstrate working with various native Win32 GUI windows, controls and layouts with modern C++. Originally spun off from my `win32-experiments` repo after I found the techniques developed there to be useful for serious desktop app development. One sample is currently added, but more development will be done over time.
+
+## Building
+
+Visual Studio 2026 with the `Desktop development with C++` workload is required. Make sure `MSVC AddressSanitizer` is enabled in the Visual Studio's individual components, as the debug builds are instrumented for memory safety. I use the preview MSVC build tools (installed via the `MSVC Build Tools for x64/x86 (Preview)` Visual Studio component), but this isn't strictly necessary and can be disabled if you wish to use the current MSVC release tools.

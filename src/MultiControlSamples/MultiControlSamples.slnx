@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="MultiControlSamples.vcxproj" Id="c92065a1-1222-4f78-995d-95eb793e5e2c" />
+</Solution>

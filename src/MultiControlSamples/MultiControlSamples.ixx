@@ -1,0 +1,17 @@
+export module MultiControlSamples;
+export import :App;
+export import :ButtonControl;
+export import :ControlWindow;
+export import :CustomWindow;
+export import :Error;
+export import :Font;
+export import :ListView;
+export import :Panel;
+export import :ProgressBarControl;
+export import :Raii;
+export import :RichEdit;
+export import :StatusBarControl;
+export import :TopLevelWindow;
+export import :TrackBar;
+export import :TreeView;
+export import :WindowCommon;
