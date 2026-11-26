@@ -18,3 +18,7 @@ Visual Studio 2026 with the `Desktop development with C++` workload is required.
 * Message reflection;
 * Callbacks for UI interaction;
 * Error handling.
+
+## AI usage statement
+
+The code in this repo has been overwhelmingly handcrafted through tedious iteration and experimentation. The insights and techniques I have applied are not necessarily novel or even interesting, but they're not generated through AI either. Where I have used AI, it's been for code review and research.
