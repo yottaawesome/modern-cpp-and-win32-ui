@@ -21,4 +21,4 @@ Visual Studio 2026 with the `Desktop development with C++` workload is required.
 
 ## AI usage statement
 
-The code in this repo has been overwhelmingly handcrafted through tedious iteration and experimentation. The insights and techniques I have applied are not necessarily novel or even interesting, but they're not generated through AI either. Where I have used AI, it's been for code review and research.
+The code in this repo has been developed through tedious manual iteration and experimentation with pushing new C++ features beyond their limits. Where I have used AI, it's been for code review and research.
