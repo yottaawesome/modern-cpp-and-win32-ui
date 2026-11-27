@@ -72,7 +72,7 @@ export namespace MultiControlSamples
 				args.ExtendedStyle,
 				args.ClassName.data(),
 				args.Title.data(),
-				Win32::WindowStyles::Child | Win32::WindowStyles::Visible | Win32::WindowStyles::ClipChildren | args.Style,
+				Win32::WindowStyles::Child | Win32::WindowStyles::Visible | args.Style,
 				args.X,
 				args.Y,
 				args.Width,
@@ -103,23 +103,22 @@ export namespace MultiControlSamples
 		) noexcept -> Win32::LRESULT
 		try
 		{
-			switch (msg)
+			if (auto ptr = reinterpret_cast<ControlWindow*>(dwRefData); not ptr)
+			{
+				return Win32::DefSubclassProc(hwnd, msg, wParam, lParam);
+			}
+			else switch (msg)
 			{
 				case Win32::WindowMessages::NonClientDestroy:
 				{
-					if (auto ptr = reinterpret_cast<ControlWindow*>(dwRefData); ptr)
-					{
-						ptr->m_hwnd = nullptr;
-						Win32::RemoveWindowSubclass(hwnd, ControlProc, subclassId);
-					}
+					ptr->m_hwnd = nullptr;
+					Win32::RemoveWindowSubclass(hwnd, ControlProc, subclassId);
 					return Win32::DefSubclassProc(hwnd, msg, wParam, lParam);
 				}
 
 				default:
 				{
-					if (auto ptr = reinterpret_cast<ControlWindow*>(dwRefData); ptr)
-						return ptr->HandleMessage(hwnd, msg, wParam, lParam);
-					return Win32::DefSubclassProc(hwnd, msg, wParam, lParam);
+					return ptr->HandleMessage(hwnd, msg, wParam, lParam);
 				}
 			}
 		}
