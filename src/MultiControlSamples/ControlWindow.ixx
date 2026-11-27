@@ -93,26 +93,48 @@ export namespace MultiControlSamples
 		}
 
 	private:
-		static auto __stdcall ControlProc(
+		static auto ControlProc(
 			Win32::HWND hwnd,
 			Win32::UINT msg,
 			Win32::WPARAM wParam,
 			Win32::LPARAM lParam,
 			Win32::UINT_PTR subclassId,
 			Win32::DWORD_PTR dwRefData
-		) -> Win32::LRESULT
+		) noexcept -> Win32::LRESULT
+		try
 		{
-			auto ptr = reinterpret_cast<ControlWindow*>(dwRefData);
-			if (msg == Win32::WindowMessages::NonClientDestroy)
+			switch (msg)
 			{
-				if (ptr)
-					ptr->m_hwnd = nullptr;
-				Win32::RemoveWindowSubclass(hwnd, ControlProc, subclassId);
-				return Win32::DefSubclassProc(hwnd, msg, wParam, lParam);
+				case Win32::WindowMessages::Create:
+				{
+					auto createStruct = reinterpret_cast<Win32::CREATESTRUCT*>(lParam);
+					if (auto ptr = reinterpret_cast<ControlWindow*>(createStruct->lpCreateParams); ptr)
+						ptr->m_hwnd = hwnd;
+					return Win32::DefSubclassProc(hwnd, msg, wParam, lParam);
+				}
+
+				case Win32::WindowMessages::NonClientDestroy:
+				{
+					if (auto ptr = reinterpret_cast<ControlWindow*>(dwRefData); ptr)
+					{
+						ptr->m_hwnd = nullptr;
+						Win32::RemoveWindowSubclass(hwnd, ControlProc, subclassId);
+					}
+					return Win32::DefSubclassProc(hwnd, msg, wParam, lParam);
+				}
+
+				default:
+				{
+					if (auto ptr = reinterpret_cast<ControlWindow*>(dwRefData); ptr)
+						return ptr->HandleMessage(hwnd, msg, wParam, lParam);
+					return Win32::DefSubclassProc(hwnd, msg, wParam, lParam);
+				}
 			}
-			return ptr
-				? ptr->HandleMessage(hwnd, msg, wParam, lParam)
-				: Win32::DefSubclassProc(hwnd, msg, wParam, lParam);
+		}
+		catch (...)
+		{
+
+			return Win32::DefSubclassProc(hwnd, msg, wParam, lParam);
 		}
 
 	protected:

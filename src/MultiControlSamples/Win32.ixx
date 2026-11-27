@@ -70,6 +70,7 @@ export namespace Win32
 		::HFONT,
 		::NONCLIENTMETRICS,
 		::BOOL,
+		::CREATESTRUCT,
 		::ShowWindow,
 		::SetWindowPos,
 		::GetParent,
@@ -280,9 +281,10 @@ export namespace Win32
 			Size = WM_SIZE,
 			SetFont = WM_SETFONT,
 
-			ReflectedCommand = WM_APP + 1,
-			ReflectedNotify = WM_APP + 2,
-			ReflectedStaticControlColor = WM_APP + 3
+			UnhandledException = WM_APP + 1,
+			ReflectedCommand,
+			ReflectedNotify,
+			ReflectedStaticControlColor
 		};
 	}
 
