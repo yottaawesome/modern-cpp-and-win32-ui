@@ -105,14 +105,6 @@ export namespace MultiControlSamples
 		{
 			switch (msg)
 			{
-				case Win32::WindowMessages::Create:
-				{
-					auto createStruct = reinterpret_cast<Win32::CREATESTRUCT*>(lParam);
-					if (auto ptr = reinterpret_cast<ControlWindow*>(createStruct->lpCreateParams); ptr)
-						ptr->m_hwnd = hwnd;
-					return Win32::DefSubclassProc(hwnd, msg, wParam, lParam);
-				}
-
 				case Win32::WindowMessages::NonClientDestroy:
 				{
 					if (auto ptr = reinterpret_cast<ControlWindow*>(dwRefData); ptr)
