@@ -100,6 +100,37 @@ export namespace MultiControlSamples
 							return Win32::DefWindowProcW(hwnd, msg, wParam, lParam);
 						}
 
+						case Win32::WindowMessages::UnhandledException:
+						{
+							auto ancestor = Win32::GetAncestor(hwnd, Win32::GetAncestorFlags::Root);
+							// We're the top-level window, so we can handle the exception here
+							if (ancestor and ancestor == hwnd) 
+							{
+								auto ptr = reinterpret_cast<TWindowInstance*>(Win32::GetWindowLongPtrW(hwnd, Win32::Gwlp::UserData));
+								if (ptr)
+								{
+									return ptr->HandleMessage(hwnd, msg, wParam, lParam);
+								}
+								else
+								{
+									Win32::PostQuitMessage(1);
+									return 0;
+								}
+							}
+							// Pass the exception to the top-level window for handling
+							else if (ancestor) 
+							{
+								Win32::SendMessageW(ancestor, msg, wParam, lParam);
+								return 0;
+							}
+							// No ancestor found, so we can't handle the exception, post to quit the message loop
+							else 
+							{
+								Win32::PostQuitMessage(1);
+								return 0;
+							}
+						}
+
 						default:
 						{
 							auto ptr = reinterpret_cast<TWindowInstance*>(Win32::GetWindowLongPtrW(hwnd, Win32::Gwlp::UserData));

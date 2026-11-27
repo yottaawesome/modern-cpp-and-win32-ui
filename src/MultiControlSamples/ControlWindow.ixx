@@ -124,7 +124,17 @@ export namespace MultiControlSamples
 		}
 		catch (...)
 		{
-
+			auto ancestor = Win32::GetAncestor(hwnd, Win32::GetAncestorFlags::Root);
+			if (ancestor)
+			{
+				auto exception = std::current_exception();
+				Win32::SendMessageW(
+					ancestor,
+					Win32::WindowMessages::UnhandledException,
+					msg,
+					reinterpret_cast<Win32::LPARAM>(&exception)
+				);
+			}
 			return Win32::DefSubclassProc(hwnd, msg, wParam, lParam);
 		}
 

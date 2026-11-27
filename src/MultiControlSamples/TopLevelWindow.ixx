@@ -89,6 +89,12 @@ export namespace MultiControlSamples
 		{
 			switch (msg)
 			{
+				case Win32::WindowMessages::UnhandledException:
+				{
+					Win32::PostQuitMessage(1);
+					return 0;
+				}
+
 				case Win32::WindowMessages::Command:
 				{
 					if (auto originatingWindow = reinterpret_cast<Win32::HWND>(lParam); originatingWindow)
@@ -132,6 +138,7 @@ export namespace MultiControlSamples
 					return 0;
 				}
 			}
+
 			return Win32::DefWindowProcW(hwnd, msg, wParam, lParam);
 		}
 

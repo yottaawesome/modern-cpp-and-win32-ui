@@ -71,6 +71,7 @@ export namespace Win32
 		::NONCLIENTMETRICS,
 		::BOOL,
 		::CREATESTRUCT,
+		::GetAncestor,
 		::ShowWindow,
 		::SetWindowPos,
 		::GetParent,
@@ -107,6 +108,16 @@ export namespace Win32
 		::DispatchMessageW
 		;
 	
+	namespace GetAncestorFlags
+	{
+		enum
+		{
+			Parent = GA_PARENT,
+			Root = GA_ROOT,
+			RootOwner = GA_ROOTOWNER
+		};
+	}
+
 	constexpr auto DefaultCharset = DEFAULT_CHARSET;
 	constexpr auto SpiGetNonClientMetrics = SPI_GETNONCLIENTMETRICS;
 
