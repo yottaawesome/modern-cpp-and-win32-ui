@@ -151,7 +151,10 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="App\AllPanels.ixx" />
     <ClCompile Include="App\App.ixx" />
+    <ClCompile Include="App\MainApp.ixx" />
+    <ClCompile Include="App\FirstPanel.ixx" />
     <ClCompile Include="Controls\ButtonControl.ixx" />
     <ClCompile Include="Controls\Controls.ixx" />
     <ClCompile Include="Controls\ControlWindow.ixx" />
@@ -159,6 +162,8 @@
     <ClCompile Include="Error\Error.ixx" />
     <ClCompile Include="Font\Font.ixx" />
     <ClCompile Include="Controls\ListViewControl.ixx" />
+    <ClCompile Include="Font\FontLoader.ixx" />
+    <ClCompile Include="Font\Fonts.ixx" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CustomWindows\Panel.ixx" />
     <ClCompile Include="Raii\Raii.ixx" />
