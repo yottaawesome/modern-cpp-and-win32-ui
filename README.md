@@ -17,6 +17,7 @@ Visual Studio 2026 with the `Desktop development with C++` workload is required.
 * Strongly-typed message handling;
 * Message reflection;
 * Callbacks for UI interaction;
+* Accounting for, and handling, DPI changes across different monitors;
 * Error handling.
 
 ## AI usage statement
