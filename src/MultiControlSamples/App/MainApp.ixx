@@ -10,12 +10,12 @@ import stdx;
 
 export namespace MultiControlSamples
 {
-	class App
+	class MainApp
 	{
 	public:
 		using MainWindow = CustomWindow<TopLevelWindow>;
 
-		App()
+		MainApp()
 		{
 			m_progressBar
 				.SetRange(0, 100)
@@ -28,11 +28,11 @@ export namespace MultiControlSamples
 				.SetText(0, L"Ready")
 				.SetText(1, L"Not connected");
 			m_mainWindow
-				.SetFontOnHierarchy(SystemFont);
+				.SetFontOnHierarchy();
 		}
 
-		App(const App&) = delete;
-		App& operator=(const App&) = delete;
+		MainApp(const MainApp&) = delete;
+		MainApp& operator=(const MainApp&) = delete;
 
 	public:
 		auto Run() -> int

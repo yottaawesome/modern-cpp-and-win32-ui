@@ -1,9 +1,10 @@
-
 export module MultiControlSamples:TopLevelWindow;
 import std;
 import Win32;
 import :Error;
 import :CustomWindow;
+import :Font;
+import :Raii;
 
 export namespace MultiControlSamples
 {
@@ -13,6 +14,7 @@ export namespace MultiControlSamples
 	struct TopLevelWindowCallbacks
 	{
 		CallbackFn<unsigned, unsigned> OnResized;
+
 	};
 
 	class TopLevelWindow
@@ -55,8 +57,7 @@ export namespace MultiControlSamples
 		{
 			if (not self.GetHwnd())
 				return self;
-			if (not font)
-				throw Error::RuntimeError{ "Invalid font handle passed to SetFontOnHierarchy()" };
+
 			Win32::SendMessageW(
 				self.GetHwnd(),
 				Win32::WindowMessages::SetFont,
@@ -77,6 +78,18 @@ export namespace MultiControlSamples
 				},
 				reinterpret_cast<Win32::LPARAM>(font)
 			);
+			return self;
+		}
+
+		auto SetFontOnHierarchy(this auto&& self) -> decltype(self)
+		{
+			if (not self.GetHwnd())
+				return self;
+
+			auto dpi = Win32::GetDpiForWindow(self.GetHwnd());
+			auto font = SystemFont.Get(dpi);
+			self.SetFontOnHierarchy(font.get());
+			self.m_font = std::move(font);
 			return self;
 		}
 
@@ -139,6 +152,12 @@ export namespace MultiControlSamples
 					Win32::EndPaint(hwnd, &ps);
 					return 0;
 				}
+
+				case Win32::WindowMessages::DpiChanged:
+				{
+					self.SetFontOnHierarchy();
+					return 0;
+				}
 			}
 
 			return Win32::DefWindowProcW(hwnd, msg, wParam, lParam);
@@ -146,5 +165,6 @@ export namespace MultiControlSamples
 
 	protected:
 		TopLevelWindowCallbacks m_callbacks;
+		FontUniquePtr m_font;
 	};
 }

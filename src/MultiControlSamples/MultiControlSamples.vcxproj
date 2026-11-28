@@ -162,7 +162,7 @@
     <ClCompile Include="Error\Error.ixx" />
     <ClCompile Include="Font\Font.ixx" />
     <ClCompile Include="Controls\ListViewControl.ixx" />
-    <ClCompile Include="Font\FontLoader.ixx" />
+    <ClCompile Include="Font\FontFactory.ixx" />
     <ClCompile Include="Font\Fonts.ixx" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CustomWindows\Panel.ixx" />

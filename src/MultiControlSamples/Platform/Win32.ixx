@@ -71,6 +71,9 @@ export namespace Win32
 		::NONCLIENTMETRICS,
 		::BOOL,
 		::CREATESTRUCT,
+		::NONCLIENTMETRICSW,
+		::GetDpiForWindow,
+		::SystemParametersInfoForDpi,
 		::GetAncestor,
 		::ShowWindow,
 		::SetWindowPos,
@@ -291,6 +294,7 @@ export namespace Win32
 			ExitSizeMove = WM_EXITSIZEMOVE,
 			Size = WM_SIZE,
 			SetFont = WM_SETFONT,
+			DpiChanged = WM_DPICHANGED,
 
 			UnhandledException = WM_APP + 1,
 			ReflectedCommand,
