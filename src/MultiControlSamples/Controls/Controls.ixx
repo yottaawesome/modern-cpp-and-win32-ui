@@ -1,0 +1,9 @@
+export module MultiControlSamples:Controls;
+export import :Controls.ButtonControl;
+export import :Controls.ControlWindow;
+export import :Controls.ListViewControl;
+export import :Controls.ProgressBarControl;
+export import :Controls.RichEditControl;
+export import :Controls.StatusBarControl;
+export import :Controls.TrackBarControl;
+export import :Controls.TreeViewControl;

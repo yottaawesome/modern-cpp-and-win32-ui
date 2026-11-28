@@ -1,7 +1,7 @@
-export module MultiControlSamples:ButtonControl;
+export module MultiControlSamples:Controls.ButtonControl;
 import std;
 import Win32;
-import :ControlWindow;
+import :Controls.ControlWindow;
 
 export namespace MultiControlSamples
 {

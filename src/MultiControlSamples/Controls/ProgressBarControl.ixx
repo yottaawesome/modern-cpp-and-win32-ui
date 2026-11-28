@@ -1,8 +1,8 @@
-export module MultiControlSamples:ProgressBarControl;
+export module MultiControlSamples:Controls.ProgressBarControl;
 import std;
 import Win32;
 import :Error;
-import :ControlWindow;
+import :Controls.ControlWindow;
 
 export namespace MultiControlSamples
 {

@@ -1,4 +1,4 @@
-export module MultiControlSamples:ControlWindow;
+export module MultiControlSamples:Controls.ControlWindow;
 import std;
 import Win32;
 import :Error;
