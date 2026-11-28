@@ -2,10 +2,16 @@ export module MultiControlSamples:CustomWindow;
 import std;
 import Win32;
 import :Error;
-import :WindowCommon;
 
 export namespace MultiControlSamples
 {
+	struct CustomWindowParams
+	{
+		std::wstring ClassName;
+		Win32::DWORD Style = 0;
+		Win32::DWORD ExtendedStyle = 0;
+	};
+
 	struct CustomWindowArgs
 	{
 		std::wstring Title;
@@ -14,6 +20,19 @@ export namespace MultiControlSamples
 		unsigned Width;
 		unsigned Height;
 		Win32::HWND Parent;
+	};
+
+	struct CreateWindowArgs
+	{
+		std::wstring ClassName = L"";
+		std::wstring Title = L"";
+		Win32::DWORD ExtendedStyle = 0;
+		Win32::DWORD Style = 0;
+		int X = 0;
+		int Y = 0;
+		unsigned Width = 0;
+		unsigned Height = 0;
+		Win32::HWND Parent = nullptr;
 	};
 
 	template<typename TWindow> // GetWindowClassName() must be defined in TWindow

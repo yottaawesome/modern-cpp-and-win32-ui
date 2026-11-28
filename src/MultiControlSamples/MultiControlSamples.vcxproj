@@ -151,26 +151,25 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="App.ixx" />
-    <ClCompile Include="ButtonControl.ixx" />
-    <ClCompile Include="ControlWindow.ixx" />
-    <ClCompile Include="CustomWindow.ixx" />
-    <ClCompile Include="Error.ixx" />
-    <ClCompile Include="Font.ixx" />
-    <ClCompile Include="ListView.ixx" />
+    <ClCompile Include="App\App.ixx" />
+    <ClCompile Include="Controls\ButtonControl.ixx" />
+    <ClCompile Include="Controls\ControlWindow.ixx" />
+    <ClCompile Include="CustomWindows\CustomWindow.ixx" />
+    <ClCompile Include="Error\Error.ixx" />
+    <ClCompile Include="Font\Font.ixx" />
+    <ClCompile Include="Controls\ListView.ixx" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Panel.ixx" />
-    <ClCompile Include="Raii.ixx" />
-    <ClCompile Include="RichEdit.ixx" />
-    <ClCompile Include="StatusBar.ixx" />
-    <ClCompile Include="stdx.ixx" />
-    <ClCompile Include="TopLevelWindow.ixx" />
-    <ClCompile Include="ProgressBarControl.ixx" />
+    <ClCompile Include="CustomWindows\Panel.ixx" />
+    <ClCompile Include="Raii\Raii.ixx" />
+    <ClCompile Include="Controls\RichEdit.ixx" />
+    <ClCompile Include="Controls\StatusBar.ixx" />
+    <ClCompile Include="Platform\stdx.ixx" />
+    <ClCompile Include="CustomWindows\TopLevelWindow.ixx" />
+    <ClCompile Include="Controls\ProgressBarControl.ixx" />
     <ClCompile Include="MultiControlSamples.ixx" />
-    <ClCompile Include="TrackBar.ixx" />
-    <ClCompile Include="TreeView.ixx" />
-    <ClCompile Include="Win32.ixx" />
-    <ClCompile Include="WindowCommon.ixx" />
+    <ClCompile Include="Controls\TrackBar.ixx" />
+    <ClCompile Include="Controls\TreeView.ixx" />
+    <ClCompile Include="Platform\Win32.ixx" />
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="App.manifest" />

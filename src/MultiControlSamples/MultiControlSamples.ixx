@@ -14,4 +14,3 @@ export import :StatusBarControl;
 export import :TopLevelWindow;
 export import :TrackBar;
 export import :TreeView;
-export import :WindowCommon;

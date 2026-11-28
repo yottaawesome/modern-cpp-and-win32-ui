@@ -1,7 +1,6 @@
 export module MultiControlSamples:ProgressBarControl;
 import std;
 import Win32;
-import :WindowCommon;
 import :Error;
 import :ControlWindow;
 

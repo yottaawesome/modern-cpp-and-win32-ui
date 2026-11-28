@@ -3,11 +3,13 @@ export module MultiControlSamples:TopLevelWindow;
 import std;
 import Win32;
 import :Error;
-import :WindowCommon;
 import :CustomWindow;
 
 export namespace MultiControlSamples
 {
+	template<typename...TArgs>
+	using CallbackFn = std::move_only_function<auto(TArgs&&...)->void>;
+
 	struct TopLevelWindowCallbacks
 	{
 		CallbackFn<unsigned, unsigned> OnResized;

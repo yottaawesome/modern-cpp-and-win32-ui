@@ -1,7 +1,6 @@
 export module MultiControlSamples:ButtonControl;
 import std;
 import Win32;
-import :WindowCommon;
 import :ControlWindow;
 
 export namespace MultiControlSamples

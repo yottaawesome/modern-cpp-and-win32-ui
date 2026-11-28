@@ -2,7 +2,6 @@ export module MultiControlSamples:StatusBarControl;
 import std;
 import Win32;
 import :ControlWindow;
-import :WindowCommon;
 
 export namespace MultiControlSamples
 {

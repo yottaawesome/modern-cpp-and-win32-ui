@@ -2,7 +2,6 @@ export module MultiControlSamples:Panel;
 import std;
 import Win32;
 import :Error;
-import :WindowCommon;
 import :CustomWindow;
 
 export namespace MultiControlSamples
