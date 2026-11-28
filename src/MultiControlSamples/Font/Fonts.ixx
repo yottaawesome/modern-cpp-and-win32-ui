@@ -10,7 +10,8 @@ export namespace MultiControlSamples
 		[] -> Win32::HFONT
 		{
 			auto metrics = Win32::NONCLIENTMETRICS{ .cbSize = sizeof(Win32::NONCLIENTMETRICS) };
-			Win32::SystemParametersInfoW(Win32::SpiGetNonClientMetrics, metrics.cbSize, &metrics, 0);
+			if (not Win32::SystemParametersInfoW(Win32::SpiGetNonClientMetrics, metrics.cbSize, &metrics, 0))
+				throw Error::Win32Error{ Win32::GetLastError(), "Failed to get non-client metrics." };
 			// When you're done with the font, don't forget to call Win32::DeleteObject();
 			auto font = Win32::CreateFontIndirectW(&metrics.lfCaptionFont);
 			if (not font)
