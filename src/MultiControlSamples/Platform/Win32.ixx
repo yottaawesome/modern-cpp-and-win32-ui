@@ -111,6 +111,17 @@ export namespace Win32
 		::DispatchMessageW
 		;
 	
+	[[nodiscard]]
+	constexpr auto HiWord(auto value) noexcept -> unsigned
+	{
+		return HIWORD(value);
+	}
+	[[nodiscard]]
+	constexpr auto LoWord(auto value) noexcept -> unsigned
+	{
+		return LOWORD(value);
+	}
+
 	namespace GetAncestorFlags
 	{
 		enum

@@ -81,6 +81,17 @@ export namespace MultiControlSamples
 			return self;
 		}
 
+		auto SetFontOnHierarchy(this auto&& self, unsigned dpi) -> decltype(self)
+		{
+			if (not self.GetHwnd())
+				return self;
+
+			auto font = SystemFont.Get(dpi);
+			self.SetFontOnHierarchy(font.get());
+			self.m_font = std::move(font);
+			return self;
+		}
+
 		auto SetFontOnHierarchy(this auto&& self) -> decltype(self)
 		{
 			if (not self.GetHwnd())
@@ -155,7 +166,19 @@ export namespace MultiControlSamples
 
 				case Win32::WindowMessages::DpiChanged:
 				{
-					self.SetFontOnHierarchy();
+					const auto dpi = Win32::HiWord(wParam);
+					const auto suggested = reinterpret_cast<const Win32::RECT*>(lParam);
+
+					Win32::SetWindowPos(
+						hwnd,
+						nullptr,
+						suggested->left,
+						suggested->top,
+						suggested->right - suggested->left,
+						suggested->bottom - suggested->top,
+						Win32::SetWindowPosFlags::NoZOrder | Win32::SetWindowPosFlags::NoActivate);
+
+					self.SetFontOnHierarchy(dpi);
 					return 0;
 				}
 			}
